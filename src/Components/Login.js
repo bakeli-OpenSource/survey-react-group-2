@@ -1,4 +1,4 @@
-import axios from 'axios';
+// import axios from 'axios';
 import React,{ useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 // import axios from "../api/axios";
@@ -13,7 +13,7 @@ import { NavLink, useNavigate } from 'react-router-dom';
     event.preventDefault();
     console.log(email,password);
     try {
-      await axios.post('http://localhost:8000/api/users/login',{email,password})
+      // await axios.post('http://localhost:8000/api/users/login',{email,password})
       setEmail("");
       setPassword("")
       navigate("/")
