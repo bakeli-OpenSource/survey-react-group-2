@@ -1,7 +1,7 @@
 import React,{ useState } from 'react';
 import { NavLink, useNavigate} from 'react-router-dom';
 // import axios from "../api/axios";
-import axios from 'axios';
+// import axios from 'axios';
 
  function Register() {
   const [name, setName] = useState("");
@@ -17,7 +17,7 @@ import axios from 'axios';
     await csrf()
     // console.log(name,email,password);
     try {
-      await axios.post('http://localhost:8000/api/users/register',{name,email,password,confirmPassword})
+      // await axios.post('http://localhost:8000/api/users/register',{name,email,password,confirmPassword})
       setName("");
       setEmail("");
       setPassword("");
