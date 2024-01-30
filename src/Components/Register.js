@@ -1,11 +1,16 @@
 /* eslint-disable no-unused-vars */
 import React,{ useState } from 'react';
 import { NavLink, useNavigate} from 'react-router-dom';
+<<<<<<< HEAD
 import Loading from './Loading';
 import Message from './Message';
 import { register } from '../redux/actions/userAction';
 import { useSelector , useDispatch } from 'react-redux';
 import Home from './Home';
+=======
+// import axios from "../api/axios";
+// import axios from 'axios';
+>>>>>>> 2106d33efdc27de5c060eee074fd16e3afa9f3d0
 
  function Register() {
   const [name, setName] = useState("");
@@ -22,11 +27,25 @@ import Home from './Home';
 
   const handleRegister = async(event) => {
     event.preventDefault();
+<<<<<<< HEAD
     if (password !== confirmPassword) {
       setMessage("le mot de passe ne correspond pas");
     } else {
       dispatch(register(name, email, password));
       navigate("/");
+=======
+    await csrf()
+    // console.log(name,email,password);
+    try {
+      // await axios.post('http://localhost:8000/api/users/register',{name,email,password,confirmPassword})
+      setName("");
+      setEmail("");
+      setPassword("");
+      setConfirmPassword("")
+      navigate("/")
+    } catch (e) {
+      console.log(e);
+>>>>>>> 2106d33efdc27de5c060eee074fd16e3afa9f3d0
     }
     // console.log(name,email,password);
     // try {

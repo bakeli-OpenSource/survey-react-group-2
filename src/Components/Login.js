@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 /* eslint-disable no-unused-vars */
+=======
+>>>>>>> 2106d33efdc27de5c060eee074fd16e3afa9f3d0
 // import axios from 'axios';
 import React,{ useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
@@ -22,6 +25,7 @@ import Home from './Home';
   const handleLogin = async(event) => {
     event.preventDefault();
     console.log(email,password);
+<<<<<<< HEAD
     await dispatch(login(email, password));
     navigate("/");
 
@@ -33,6 +37,16 @@ import Home from './Home';
     // } catch (e) {
     //   console.log(e);
     // }
+=======
+    try {
+      // await axios.post('http://localhost:8000/api/users/login',{email,password})
+      setEmail("");
+      setPassword("")
+      navigate("/")
+    } catch (e) {
+      console.log(e);
+    }
+>>>>>>> 2106d33efdc27de5c060eee074fd16e3afa9f3d0
   }
   return (
     <>
