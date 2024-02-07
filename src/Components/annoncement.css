@@ -1,0 +1,19 @@
+
+ /*Annoncement*/
+ .annoncement {
+    height: 60px;
+  /* background-color: pink; */
+  background-color: #E6425E;
+  color: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+  font-weight: 50px;
+   }
+  marquee{
+    position: fixed;
+    z-index: 10;
+  background-color: #E6425E;
+    height: 60px;
+  }

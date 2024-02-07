@@ -18,10 +18,16 @@ export const login = (email, password) => async (dispatch) => {
  
     try {
         dispatch({ type: USER_LOGIN_REQUEST })
-        // const config= {headers:{'content-Type':'application/json'}};
-        const { data } = await axios.post("http://localhost:8000/api/users/login",
+        const token = sessionStorage.getItem('token');
+        const config= {
+            headers:{
+            'content-Type':'application/json',
+            'Authorization': `Bearer ${token}`
+        }
+    };
+        const { data } = await axios.post("http://localhost:8000/api/login",
             { email, password },
-            // config 
+            config 
         );
         
             dispatch({

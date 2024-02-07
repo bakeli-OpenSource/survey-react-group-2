@@ -6,9 +6,13 @@ import rootReducers from "./redux/reducers";
 
 const userInfoFromStorage = localStorage.getItem('userInfo') ? JSON.parse(localStorage.getItem('userInfo')):null
 
+const sondageInfoFromStorage = localStorage.getItem('sondageInfo') ? JSON.parse(localStorage.getItem('productInfo')):[];
+
+
 
 const initialState = {   
     userLogin : {userInfo:userInfoFromStorage},
+    sondageadd:{sondageInfo:sondageInfoFromStorage}
 };
 const middleware =[thunk]
 

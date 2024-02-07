@@ -1,7 +1,4 @@
-<<<<<<< HEAD
 /* eslint-disable no-unused-vars */
-=======
->>>>>>> 2106d33efdc27de5c060eee074fd16e3afa9f3d0
 // import axios from 'axios';
 import React,{ useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
@@ -9,7 +6,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { login } from '../redux/actions/userAction';
 import Loading from './Loading';
 import Message from './Message';
-import Home from './Home';
 // import axios from "../api/axios";
 
  function Login() {
@@ -25,9 +21,8 @@ import Home from './Home';
   const handleLogin = async(event) => {
     event.preventDefault();
     console.log(email,password);
-<<<<<<< HEAD
     await dispatch(login(email, password));
-    navigate("/");
+    navigate("/sondage");
 
     // try {
     //   await axios.post('http://localhost:8000/api/users/login',{email,password})
@@ -37,64 +32,55 @@ import Home from './Home';
     // } catch (e) {
     //   console.log(e);
     // }
-=======
-    try {
-      // await axios.post('http://localhost:8000/api/users/login',{email,password})
-      setEmail("");
-      setPassword("")
-      navigate("/")
-    } catch (e) {
-      console.log(e);
-    }
->>>>>>> 2106d33efdc27de5c060eee074fd16e3afa9f3d0
   }
   return (
     <>
-    <Home/>
-     <h2 className='h2'>page Login</h2>
-      <div className="mainlog">
-     <div className="sub-main"> 
-       <div>
-         <div className="imgs">
-           <div className="container-image">
-             <img src="assets/a.png" alt="a" className="profile"/>
-           </div>
-         </div>
-         <div>
-          <div className='h1'>
-           <h1>Login</h1>
-           </div>
-           {error && <Message variant="danger">{error}</Message>}
-          {loading && <Loading />}
-          {Loading}
-            <form onSubmit={handleLogin}>
-           <div className='fisrt-input'>
-             <img src="assets/email.jpg" alt="email" className="email"/>
-             <input type="email"
-              value={email}
+    <div className="body">
+    <h2>Page de Connexion</h2>
+<div class="container" id="container">
+	<div class="form-container sign-in-container">
+  {error && <Message variant="danger">{error}</Message>}
+     {loading && <Loading />}
+       {Loading}
+    <form onSubmit={handleLogin}>
+			<h1>Login</h1>
+			<div class="social-container">
+				<a href="/" class="social"><i class="fab fa-facebook-f"></i></a>
+				<a href="/" class="social"><i class="fab fa-google-plus-g"></i></a>
+				<a href="/" class="social"><i class="fab fa-linkedin-in"></i></a>
+			</div>
+			<span>or use your account</span>
+			<input type="email" value={email}
               onChange={(e) => setEmail(e.target.value)} 
-               placeholder="Email" className="name"/>
-           </div>
-           <div className="second-input">
-             <img src="assets/pass.png" alt="pass" className="email"/>
-             <input type="password" 
-             value={password}
-             onChange={(e) => setPassword(e.target.value)}
-             placeholder="********"
-             className="name"/>
-           </div>
-          <div className="login-button">
-          <button type='sumit' className='logbutton'>Login</button>
-          </div>
-           </form>
-            <div className="link">
-              <p>Vous n'avez pas de compte ?</p>
-               <NavLink to="/register">Sign Up</NavLink>
-            </div>
-         </div>
-       </div>
-     </div>
+               placeholder="Email"/> 
+			<input type="password" value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder="********" />
+			<br/>
+			<button type='submit'>Login</button>
+			<p>Vous n'avez pas de compte ? ?</p>
+			<NavLink to="/register">register</NavLink>	
+		</form>
+		
+            
+	</div>
+	<div class="overlay-container">
+		<div class="overlay">
+			<div class="overlay-panel overlay-left">
+				<h1>Welcome Back!</h1>
+				<p>To keep connected with us please login with your personal info</p>
+				<button class="ghost" id="signIn">Sign In</button>
+			</div>
+			<div class="overlay-panel overlay-right">
+				<h1>Hello, Friend!</h1>
+				<p>Entrez vos données personnelles et commencez votre sondage avec nous</p>
+				<button class="ghost" id="signUp">Sign Up</button>
+			</div>
+		</div>
+	</div>
+</div>
     </div>
+    
     </>
   )
 }
