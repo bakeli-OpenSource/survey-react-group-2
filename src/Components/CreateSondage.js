@@ -11,11 +11,11 @@ const CreateSondage = () => {
     const [titre, setSurveyTitle] = useState('');
     const [option, setQuestions] = useState([{ options: [''] }]);
 
-    // const handleQuestionTextChange = (index, value) => {
-    //     const newQuestions = [...option];
-    //     newQuestions[index].question = value;
-    //     setQuestions(newQuestions);
-    // };
+    const handleQuestionTextChange = (index, value) => {
+        const newQuestions = [...option];
+        newQuestions[index].question = value;
+        setQuestions(newQuestions);
+    };
 
     const handleOptionChange = (questionIndex, optionIndex, value) => {
         const newQuestions = [...option];
@@ -23,9 +23,9 @@ const CreateSondage = () => {
         setQuestions(newQuestions);
     };
 
-    // const addQuestion = () => {
-    //     setQuestions([...option, { question: '', options: [''] }]);
-    // };
+    const addQuestion = () => {
+        setQuestions([...option, { question: '', options: [''] }]);
+    };
 
     const addOption = (questionIndex) => {
         const newQuestions = [...option];
@@ -88,6 +88,13 @@ const CreateSondage = () => {
             <div className="form-field">
             {option.map((question, questionIndex) => (
                 <div key={questionIndex}>
+                    <textarea
+                        id={`questionTextField-${questionIndex}`}
+                        value={question.question}
+                        onChange={(e) => handleQuestionTextChange(questionIndex, e.target.value)}
+                        className="flex items-center h-20 px-4 w-64 bg-gray-200 mt-2 rounded focus:outline-none focus:ring-2 text-black border border-blue-300 w-full"
+                        placeholder={`Texte de la Question ${questionIndex + 1}`}
+                    />
 
                     {question.options.map((option, optionIndex) => (
                         <div key={optionIndex} className="flex items-center mt-2">
@@ -97,7 +104,7 @@ const CreateSondage = () => {
                                 value={option}
                                 onChange={(e) => handleOptionChange(questionIndex, optionIndex, e.target.value)}
                                 className="flex items-center h-12 px-4 w-full bg-gray-200 rounded focus:outline-none focus:ring-2 text-black text-sm border border-blue-300"
-                                placeholder={`option ${optionIndex }`}
+                                placeholder={`option ${optionIndex +1}`}
                             />
                             </div>
                             {question.options.length > 1 && (
@@ -117,8 +124,9 @@ const CreateSondage = () => {
                         onClick={() => addOption(questionIndex)}
                         className="mt-2 bg-green-500 text-white px-2 py-1 rounded"
                     >
-                        Ajouter une option
+                        Ajout option
                     </button>
+                    <br/>
                     <br/>
                     {option.length > 1 && (
                         <button
@@ -129,9 +137,21 @@ const CreateSondage = () => {
                             Supprimer la Question
                         </button>
                     )}
-                </div>  
+                    <br/>
+                    
+                </div> 
+                 
             ))}
          </div>
+         
+         <button
+                type="button"
+                onClick={addQuestion}
+                className="mt-2 bg-green-500 text-white px-2 py-1 rounded"
+            >
+                Ajout Question
+            </button>
+            <br/>
          <br/>
             <button
                 type="submit"

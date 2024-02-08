@@ -57,8 +57,11 @@ export const sondageAdd = (titre,option,token) =>
   
       dispatch({
         type: GET_SONDAGES_SUCCESS,
-        payload: data,
+        payload: data.sondage,
       });
+      console.log("sondage",data.sondage);
+
+      localStorage.setItem("sondageInfo", JSON.stringify(data));
   
     } catch (error) {
       dispatch({

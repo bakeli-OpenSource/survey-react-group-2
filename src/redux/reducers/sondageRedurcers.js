@@ -17,7 +17,7 @@ export const sondageAddReducer = (state = {}, action) => {
   export const sondagesListReducer = (state = { sondageInfo: [] }, action) => {
     switch (action.type) {
       case GET_SONDAGES_REQUEST:
-        return { loading: true, sondageInfo: [] };
+        return { ...state,loading: true, sondageInfo: [] };
       case GET_SONDAGES_SUCCESS:
         return { loading: false, sondageInfo: action.payload };
       case GET_SONDAGES_FAIL:
