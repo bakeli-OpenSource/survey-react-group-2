@@ -16,7 +16,7 @@ export const sondageAdd = (titre,option,token) =>
             'Authorization': `Bearer ${token}`
      } 
     };
-      const { data } = await axios.post( "http://localhost:8000/api/sondage/create",
+      const { data } = await axios.post( "https://api-survey-2.fewnu.app/api/sondage/create",
         { titre,option},
         config
       );
@@ -53,7 +53,7 @@ export const sondageAdd = (titre,option,token) =>
         },
       };
   
-      const { data } = await axios.get('http://localhost:8000/api/sondage/liste', config);
+      const { data } = await axios.get('https://api-survey-2.fewnu.app/api/sondage/liste', config);
   
       dispatch({
         type: GET_SONDAGES_SUCCESS,

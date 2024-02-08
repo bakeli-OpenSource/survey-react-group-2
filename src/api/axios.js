@@ -1,7 +1,8 @@
 import axios from "axios";
 
-export default axios.create({
-    baseURL: "http://localhost:8000",
+export const instance = axios.create({
+    baseURL: "https://api-survey-2.fewnu.app/api/",
+    
 
     withCredentials:true,
 })

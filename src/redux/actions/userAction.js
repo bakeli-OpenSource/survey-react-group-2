@@ -19,7 +19,7 @@ export const login = (email, password) => async (dispatch) => {
     try {
         dispatch({ type: USER_LOGIN_REQUEST })
         // const config= {headers:{'content-Type':'application/json'}};
-        const { data } = await axios.post("http://localhost:8000/api/login",
+        const { data } = await axios.post("https://api-survey-2.fewnu.app/api/login",
             { email, password },
             // config 
         );
@@ -47,7 +47,7 @@ export const register = (name, email, password) => async (dispatch) => {
     try {
         dispatch({ type: USER_REGISTER_REQUEST })
         //const config= {headers:{'content-Type':'application/json'}};
-        const { data } = await axios.post("http://localhost:8000/api/users/register",
+        const { data } = await axios.post("https://api-survey-2.fewnu.app/api/users/register",
             { name, email, password },
             //config 
         );
@@ -87,7 +87,7 @@ export const getUserDetails = (id) => async (dispatch, getState) => {
                 Authorization: `Bearer ${userInfo.token}`
             },
         };
-        const { data } = await axios.get(`http://localhost:8000/api/user/${id}`, config)
+        const { data } = await axios.get(`https://api-survey-2.fewnu.app/api/user/${id}`, config)
         dispatch({
             type: USER_DETAILS_SUCCESS,
             payload: data,

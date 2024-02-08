@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { getSondages } from '../redux/actions/sondageAction'; 
+import './sondage.css';
 // import Loading from './Loading';
 // import Message from './Message';
  function SondageList() {
@@ -26,55 +27,39 @@ const dispatch = useDispatch();
   return (
     
     //  <div className=' my-5 py-5 zIndex'>
-      
-      
-      
-            <ul>
-                
-                    <li >
-                        <h3>{item.titre}</h3>
-                        <p>Questions :</p>
-                        <ul>
+    <div className='sondage'>
+    <div id="quiz-container" className='sondage1'>
+                        <h3 id="question">{item.titre}</h3>
+                        {/* <p>Questions :</p> */}
+                        <ul id="options">
+                        <li >
                             {JSON.parse(item.option).map((question, indexQuestion) => (
                                 <li key={indexQuestion}>
                                     <p>{question.question}</p>
-                                    <ul>
                                         {question.options.map((option, indexOption) => (
                                             <li key={indexOption}>{option}</li>
                                         ))}
-                                    </ul>
                                 </li>
-                            ))}
-                        </ul>
-                    </li>
-               
+                            ))} 
+                  </li>
             </ul>
-        
-        //  </div>
-      
+        </div>
+        </div>
      );
    }
 
    return (
      <div>
-       <div className=' my-4 py-4 zIndex'>
-       {/* <div className='container py-5 m-5'>
-         <div className='row'> */}
+       <div className=' my-5 py-5 zIndex'>
            <div className=' text-center'>
              <h1>Liste de mes Sondages</h1>
              <hr />
-           </div>
             </div>
-         {/* </div>
-       </div> */}
-       <div className='container'>
-         
            {sondageInfo.map((sondage) => {
             return <CardItem key={sondage.id} item={sondage} />
            })}
-         
-       </div>
-    //  </div>
+         </div>
+     </div>
    
    )
  }

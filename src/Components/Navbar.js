@@ -38,7 +38,7 @@ function Navbar() {
           
           <div className='logbnt'>
         {userInfo && userInfo  ?(
-        <li><NavDropdown title={userInfo.user.name} className='dropdown'>  
+        <li><NavDropdown title={userInfo.user?.name} className='dropdown'>  
         <NavLink className="nav-link" to="/profil">
           <NavDropdown.Item href="/profil" className='bg-white'>profil</NavDropdown.Item>
         </NavLink>
