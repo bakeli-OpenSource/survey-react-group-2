@@ -7,8 +7,9 @@ import { NavDropdown } from 'react-bootstrap';
 import './nav.css'
 
 function Navbar() {
-  const userLogin = useSelector((state) => state.userLogin);
-     const { userInfo } = userLogin;
+     const userLogin = useSelector((state) => state?.userLogin);
+     const {userInfo} = userLogin;
+     console.log(userLogin);
      const dispatch = useDispatch();
   
      const logoutHandler = () => {
@@ -36,15 +37,15 @@ function Navbar() {
           <li><NavLink to="/sondage">Sondage</NavLink></li>
           
           <div className='logbnt'>
-        {userInfo && userInfo ?(
-        <NavDropdown title={userInfo.name} className='dropdown'>  
+        {userInfo && userInfo  ?(
+        <li><NavDropdown title={userInfo.user.name} className='dropdown'>  
         <NavLink className="nav-link" to="/profil">
-          <NavDropdown.Item href="/profil">profil</NavDropdown.Item>
+          <NavDropdown.Item href="/profil" className='bg-white'>profil</NavDropdown.Item>
         </NavLink>
         <NavDropdown.Item onClick={logoutHandler}>
           Deconnection
         </NavDropdown.Item>
-      </NavDropdown>
+      </NavDropdown></li>
         ):(
            <li><NavLink to="/register">S'inscrire</NavLink></li>                    
 )}

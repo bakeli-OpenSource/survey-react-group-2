@@ -18,16 +18,10 @@ export const login = (email, password) => async (dispatch) => {
  
     try {
         dispatch({ type: USER_LOGIN_REQUEST })
-        const token = sessionStorage.getItem('token');
-        const config= {
-            headers:{
-            'content-Type':'application/json',
-            'Authorization': `Bearer ${token}`
-        }
-    };
+        // const config= {headers:{'content-Type':'application/json'}};
         const { data } = await axios.post("http://localhost:8000/api/login",
             { email, password },
-            config 
+            // config 
         );
         
             dispatch({
@@ -79,20 +73,21 @@ export const register = (name, email, password) => async (dispatch) => {
 
 //User DETAILS
 export const getUserDetails = (id) => async (dispatch, getState) => {
+    
     try {
         dispatch({
             type: USER_DETAILS_REQUEST
         });
         const {
-            userLogin: { userInfo },
+            userLogin: {userInfo},
         } = getState();
         const config = {
             headers: { 
                 // 'content-Type': 'application/json',
-                Authorisation: `Bearer $ {userInfo.token}`
+                Authorization: `Bearer ${userInfo.token}`
             },
         };
-        const { data } = await axios.get(`http://localhost:8000/api/users/${id}`, config)
+        const { data } = await axios.get(`http://localhost:8000/api/user/${id}`, config)
         dispatch({
             type: USER_DETAILS_SUCCESS,
             payload: data,

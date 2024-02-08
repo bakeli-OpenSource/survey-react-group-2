@@ -38,6 +38,7 @@ const CreateSondage = () => {
     const dispatch = useDispatch();
     
     const sondageadd = useSelector((state) => state.sondageadd);
+    const sondageToken= useSelector((state) => state?.userLogin?.userInfo?.token);
     // eslint-disable-next-line no-unused-vars
     const {error, loading,sondageInfo} = sondageadd;
   
@@ -45,7 +46,7 @@ const CreateSondage = () => {
       e.preventDefault();
      
       
-      dispatch(sondageAdd(titre,option));
+      dispatch(sondageAdd(titre,option,sondageToken));
     //   navigate("/sondagelist");
         
     };
@@ -61,26 +62,6 @@ const CreateSondage = () => {
         setQuestions(newQuestions);
     };
 
-    // let token = sessionStorage.getItem('token');
-    // const addSondage = async (e) => {
-    //     e.preventDefault();
-
-    //     try {
-    //         const response = await axios.post('http://localhost:8000/api/sondage/create', {
-    //             titre: titre,
-    //             option: option,             
-    //         },
-    //         {
-    //             headers: {
-    //                 "Authorization" : `Bearer ${token}`
-    //             },
-    //         }
-    //         );
-    //         console.log('Sondage créé avec succès:', response.data);
-    //     } catch (error) {
-    //         console.error('Erreur lors de la création du sondage:', error.response);
-    //     }
-    // };
 
     return (
       <div className=' my-5 py-5 zIndex '>
@@ -103,6 +84,7 @@ const CreateSondage = () => {
                 onChange={(e) => setSurveyTitle(e.target.value)}
             />
             </div>
+            
             <div className="form-field">
             {option.map((question, questionIndex) => (
                 <div key={questionIndex}>
@@ -170,126 +152,3 @@ export default CreateSondage;
 
 
 
-
-// import {useState} from 'react'
-
-// import './style.css'
-
-// function CreateSondage() {
-//   const [sondageList, setSondageList] = useState([{ sondage: "", question:"", reponse:"" }]);
-
-//   const handleSondageChange = (e, index) => {
-//     const { name, value } = e.target;
-//     const list = [...sondageList];
-//     list[index][name] = value;
-//     setSondageList(list);
-//   };
-
-//   const handleSondageRemove = (index) => {
-//     const list = [...sondageList];
-//     list.splice(index, 1);
-//     setSondageList(list);
-//   };
-  
-
-//   const handleSondageAdd = () => {
-//     setSondageList([...sondageList, { sondage: "", question:"", reponse:"" }]);
-//   };
-//   return (
-//     <div className=' my-5 py-5 zIndex'>
-//     <div className="d-flex">
-//         <div className="d-flex mx-auto my-4 col-lg-7 col-md-10 col-sm-10 flex-wrap" id="content">
-
-//           <h1>Créer un Sondage</h1>
-
-//           <form className="form-control my-4" id="survey" autoComplete="off">
-//             <div className="d-flex justify-content-between align-items-center flex-wrap" id="header">
-//               <input className="my-4 mx-4" type="text" name="titre_sondage" placeholder="Titre"/>
-           
-//             </div>
-
-
-         
-//             <div className="form-field">
-//               <label htmlFor="question">Question</label>
-             
-              
-//               <div className="">
-//                 {sondageList.map((singleSondage, index) => (
-//                   <div key={index} className="sondages">
-//                     <div className="first-division">
-                    
-
-//                       <div class="form-check d-flex align-items-center justify-content">
-                        
-//                         <input
-//                           type="text"
-//                           id="reponse_texte"
-//                           name="reponse_texte"
-//                           value={singleSondage.sondage}
-//                           placeholder="Votre réponse..."
-//                           onChange={(e) => handleSondageChange(e, index)}
-//                           required
-//                           className="my-2"for="reponse"/>
-//                       </div>
-//                       <div class="form-check d-flex align-items-center justify-content-around">
-                     
-//                         <input type="text"
-//                           id="reponse_texte"
-//                           name="reponse_texte"
-//                           value={singleSondage.sondage}
-//                           placeholder="Votre réponse..."
-//                           onChange={(e) => handleSondageChange(e, index)}
-//                           required
-//                           className="my-2"for="reponse"/>
-//                       </div>
-//                       <div class="form-check d-flex align-items-center justify-content-around">
-//                         <input type="text"
-//                           id="reponse_texte"
-//                           name="reponse_texte"
-//                           value={singleSondage.sondage}
-//                           placeholder="Votre réponse..."
-//                           onChange={(e) => handleSondageChange(e, index)}
-//                           required
-//                           className="my-"for="reponse"/>
-//                       </div>
-
-//                     </div>
-//                     {sondageList.length - 1 === index && sondageList.length < 4 && (
-//                         <button
-//                           type="button"
-//                           onClick={handleSondageAdd}
-//                           className="add-btn"
-//                         >
-//                           <span>Ajouter une question</span>
-//                         </button>
-//                       )}
-//                     <div className="second-division">
-//                       {sondageList.length !== 1 && (
-//                         <button
-//                           type="button"
-//                           onClick={() => handleSondageRemove(index)}
-//                           className="remove-btn"
-//                         >
-//                           <span>Supprimer</span>
-//                         </button>
-//                       )}
-//                     </div>
-//                   </div>
-//                 ))}
-//               </div>
-//             </div>
-//             <button
-//             type="submit"
-//             className="submit-btn"
-//             >
-//               <span>Envoyerr</span>
-//             </button>
-//           </form>
-//         </div>
-//       </div>
-//      </div>
-//   );
-// }
-
-// export default CreateSondage

@@ -12,7 +12,7 @@ const sondageInfoFromStorage = localStorage.getItem('sondageInfo') ? JSON.parse(
 
 const initialState = {   
     userLogin : {userInfo:userInfoFromStorage},
-    sondageadd:{sondageInfo:sondageInfoFromStorage}
+    sondageadd:{sondageInfo:sondageInfoFromStorage},
 };
 const middleware =[thunk]
 

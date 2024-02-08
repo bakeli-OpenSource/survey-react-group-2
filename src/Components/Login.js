@@ -1,5 +1,4 @@
-/* eslint-disable no-unused-vars */
-// import axios from 'axios';
+
 import React,{ useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
@@ -18,11 +17,13 @@ import Message from './Message';
   const { error, loading, userInfo } = userLogin;
 
 
-  const handleLogin = async(event) => {
+  const handleLogin = async (event) => {
     event.preventDefault();
-    console.log(email,password);
     await dispatch(login(email, password));
+    // console.log(userLogin.userInfo);
     navigate("/sondage");
+   
+   
 
     // try {
     //   await axios.post('http://localhost:8000/api/users/login',{email,password})

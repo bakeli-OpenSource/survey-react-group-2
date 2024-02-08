@@ -1,56 +1,52 @@
 import axios from 'axios';
-import React, { useState, useEffect } from 'react'
-let token = sessionStorage.getItem('token');
-
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux';
+import { getSondages } from '../redux/actions/sondageAction'; 
+import Loading from './Loading';
+import Message from './Message';
  function SondageList() {
-    const [donneesSondage, setDonneesSondage] = useState([]);
 
-    useEffect(() => {
-      // Récupérer les données du sondage depuis l'API
-      const recupererDonnees = async () => {
-        try {
-          const reponse = await axios.get('http://localhost:8000/api/sondage/liste', {
-            headers: {
-              "Authorization": `Bearer ${token}`
-            },
-          });
-          console.log(reponse);
-          setDonneesSondage(reponse.data);
-        } catch (erreur) {
-          console.error('Erreur lors de la récupération des données du sondage :', erreur);
-        }
-      };
-  
-      recupererDonnees();
-    }, []); // L'effet sera exécuté une seule fois lors du montage du composant
-  
+  const dispatch = useDispatch();
+  const sondagesList = useSelector((state) => state.sondagesList?.sondageInfo);
+  const sondageToken= useSelector((state) => state?.userLogin?.userInfo?.token);
+
+  const { loading, error, sondageInfo } = sondagesList || {};
+
+  useEffect(() => {
+    dispatch(getSondages(sondageToken));
+  }, [dispatch]);
 
   return (
     <>
+     <div className=' my-5 py-5 zIndex'>
       <div>
-            <h2 className="text-black">Liste des sondages</h2>
-            <ul>
-                {donneesSondage.map((sondage, index) => (
-                    <li key={index}>
-                        <h3>{sondage.titre}</h3>
-                        <p>Questions :</p>
-                        <ul>
-                            {JSON.parse(sondage.option).map((question, indexQuestion) => (
-                                <li key={indexQuestion}>
-                                    <p>{question.question}</p>
-                                    <ul>
-                                        {question.options.map((option, indexOption) => (
-                                            <li key={indexOption}>{option}</li>
-                                        ))}
-                                    </ul>
-                                </li>
-                            ))}
-                        </ul>
-                    </li>
+      <h2>Liste des Sondages</h2>
+      {loading ? (
+        <Loading />
+      ) : error ? (
+        <Message variant="danger">{error}</Message>
+      ) : sondageInfo ? ( 
+        <ul>
+          {sondageInfo.map((sondage) => (
+            <li key={sondage.id}>
+              <h3>{sondage.titre}</h3>
+              <p>Options:</p>
+              <ul>
+                {sondageInfo.options.map((option, index) => (
+                  <li key={index}>{option}</li>
                 ))}
-            </ul>
-        </div>
+              </ul>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <Message variant="info">Aucun sondage trouvé.</Message>
+      )}
+    </div>
+    </div> 
     </>
-  )
+  );;
 }
 export default SondageList;
+
+

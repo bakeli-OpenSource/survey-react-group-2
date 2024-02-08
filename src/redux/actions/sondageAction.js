@@ -1,14 +1,13 @@
 import axios from "axios";
-import { SONDAGE_DETAILS_FAIL, SONDAGE_DETAILS_REQUEST, SONDAGE_DETAILS_SUCCESS } from "../../contants/sondageContants";
+import { GET_SONDAGES_FAIL, GET_SONDAGES_REQUEST, GET_SONDAGES_SUCCESS, SONDAGE_DETAILS_FAIL, SONDAGE_DETAILS_REQUEST, SONDAGE_DETAILS_SUCCESS } from "../../contants/sondageContants";
 
 
-export const sondageAdd = (titre,option) =>
+export const sondageAdd = (titre,option,token) =>
   async (dispatch) => {
     console.log(titre,option);
     try {
       dispatch({ type: SONDAGE_DETAILS_REQUEST });
 
-      const token = localStorage.getItem('token');
       console.log(token);
 
       const config = { 
@@ -18,13 +17,15 @@ export const sondageAdd = (titre,option) =>
      } 
     };
       const { data } = await axios.post( "http://localhost:8000/api/sondage/create",
-        { titre,option ,config},
-        // config
+        { titre,option},
+        config
       );
       dispatch({
         type: SONDAGE_DETAILS_SUCCESS,
         payload: data,
       });
+
+      dispatch(getSondages(token));
 
       localStorage.setItem("sondageInfo", JSON.stringify(data));
     } catch (error) {
@@ -38,3 +39,35 @@ export const sondageAdd = (titre,option) =>
       });
     }
   };
+
+
+  //get
+
+  export const getSondages = (token) => async (dispatch) => {
+    try {
+      dispatch({ type: GET_SONDAGES_REQUEST });
+  
+      const config = {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      };
+  
+      const { data } = await axios.get('http://localhost:8000/api/sondage/liste', config);
+  
+      dispatch({
+        type: GET_SONDAGES_SUCCESS,
+        payload: data,
+      });
+  
+    } catch (error) {
+      dispatch({
+        type: GET_SONDAGES_FAIL,
+        payload:
+          error.response && error.response.data.message
+            ? error.response.data.message
+            : error.message,
+      });
+    }
+  };
+
