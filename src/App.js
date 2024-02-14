@@ -26,7 +26,7 @@ function App() {
         <Route path='/sondagelist' element={<SondageList/>} />
         <Route path='/' element={<Home/>} />
       </Routes>
-      <Footer/>  
+      {/* <Footer/>   */}
       </>
 </BrowserRouter>
   
