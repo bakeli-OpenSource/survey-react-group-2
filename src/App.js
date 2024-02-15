@@ -8,7 +8,8 @@ import Footer from './Components/Footer';
  import Home from './Components/Home';
 import CreateSondage from './Components/CreateSondage';
 import SondageList from './Components/SondageList';
-import Annoncement from './Components/Annoncement';
+import Dashboard from './Components/Dashboard';
+// import Annoncement from './Components/Annoncement';
 
 
 function App() {
@@ -16,7 +17,7 @@ function App() {
       
       <BrowserRouter>
       <>
-      <Annoncement/>
+      {/* <Annoncement/> */}
        <Navbar/>
        
       <Routes>
@@ -25,6 +26,7 @@ function App() {
         <Route path='/sondage' element={<CreateSondage/>} />
         <Route path='/sondagelist' element={<SondageList/>} />
         <Route path='/' element={<Home/>} />
+        <Route path='/dashboard' element={<Dashboard/>} />
       </Routes>
       <Footer/>  
       </>

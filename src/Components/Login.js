@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { login } from '../redux/actions/userAction';
 import Loading from './Loading';
 import Message from './Message';
+import './register.css';
 // import axios from "../api/axios";
 
  function Login() {
@@ -38,12 +39,12 @@ import Message from './Message';
     <>
     <div className="body">
     <h2>Page de Connexion</h2>
-<div class="container" id="container">
+<div class="container-log" id="container">
 	<div class="form-container sign-in-container">
   {error && <Message variant="danger">{error}</Message>}
      {loading && <Loading />}
        {Loading}
-    <form onSubmit={handleLogin}>
+    <form onSubmit={handleLogin} className='form'>
 			<h1>Login</h1>
 			<div class="social-container">
 				<a href="/" class="social"><i class="fab fa-facebook-f"></i></a>

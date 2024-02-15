@@ -6,14 +6,15 @@
     box-sizing: border-box;
   }
 
-  /* form #header{
-    box-shadow: 0px 3px 5px 0;
-  } */
+
   
   #survey{
     box-shadow: 0 3px 3px 0;
   }
-
+  .form-control{
+  background-color: #FFFFFF;
+	text-align: center;
+  }
   
   .form-field {
     flex: 2;
@@ -75,7 +76,6 @@
   
   .submit-btn{
     float: inline-end;
-    /* margin-right: 150px; */
     background: #ff7200;
     color: white;
     border: 1px solid #ff7200;

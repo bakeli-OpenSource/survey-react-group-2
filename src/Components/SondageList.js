@@ -25,26 +25,31 @@ const dispatch = useDispatch();
   const CardItem = ({item}) => {
 
   return (
-    
-    //  <div className=' my-5 py-5 zIndex'>
     <div className='sondage'>
-    <div id="quiz-container" className='sondage1'>
-                        <h3 id="question">{item.titre}</h3>
-                        {/* <p>Questions :</p> */}
-                        <ul id="options">
-                        <li >
-                            {JSON.parse(item.option).map((question, indexQuestion) => (
-                                <li key={indexQuestion}>
-                                    <p>{question.question}</p>
-                                        {question.options.map((option, indexOption) => (
-                                            <li key={indexOption}>{option}</li>
-                                        ))}
-                                </li>
-                            ))} 
-                  </li>
+        <div id="quiz-container" className='sondage1'>
+          <h3 id="question">{item.titre}</h3>
+          <form className='form1'>
+            <ul id="options">
+              {JSON.parse(item.option).map((question, indexQuestion) => (
+                <li key={indexQuestion}>
+                  <p>{question.question}</p>
+                  {question.options.map((option, indexOption) => (
+                    <div key={indexOption}>
+                      <input
+                        type="radio"
+                        id={`question-${indexQuestion}-option-${indexOption}`}
+                        name={`question-${indexQuestion}`}
+                        value={option}
+                      />
+                      <label htmlFor={`question-${indexQuestion}-option-${indexOption}`}>{option}</label>
+                    </div>
+                  ))}
+                </li>
+              ))}
             </ul>
+          </form>
         </div>
-        </div>
+      </div>
      );
    }
 

@@ -1,52 +1,48 @@
-.sondage{
-    /* background-color: #0f0913; */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    /* height: 100vh; */
-    margin: 0;
-    padding: 0;
-    font-family: "Space Grotesk", sans-serif;
-    color: hwb(300 86% 13%);
-  }
-  
-  #quiz-container {
-    /* max-width: 400px; */
-    width: 50%;
-    padding: 20px;
-    background-color: #0f1623;
-    /* background-color: #d2b863; */
-    border-radius: 8px;
-    align-items: center;
-    text-align: center;
-  }
-  
-.container1 {
-    /* background-color: #fff; */
-	
-	position: relative;
-	overflow: hidden;
-	width: 768px;
-	max-width: 100%;
-	min-height: 500px;
-   
+
+.form1{
+  background-color: #FFFFFF;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	padding: 0 50px;
+	height: 100%;
+	text-align: center;
 }
 
- .sondage1 ul {
-    list-style: none;
-    padding: 0;
-  }
-  
- .sondage1 li {
-    cursor: pointer;
-    padding: 10px;
-    border: 1px solid #ccc;
-    margin: 5px;
-    width: 100%;
-    border-radius: 5px;
-  }
- .sondage1 li:hover {
-    background-color: #ff7200;
-  }
+.sondage {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
 
-  
+.container {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+fieldset {
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 10px;
+}
+
+legend {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+
+

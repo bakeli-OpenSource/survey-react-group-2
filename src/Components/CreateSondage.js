@@ -47,7 +47,7 @@ const CreateSondage = () => {
      
       
       dispatch(sondageAdd(titre,option,sondageToken));
-    //   navigate("/sondagelist");
+      navigate("/dashboardt");
         
     };
     const removeQuestion = (index) => {
@@ -67,8 +67,8 @@ const CreateSondage = () => {
       <div className=' my-5 py-5 zIndex '>
     <div className="d-flex align-items-center mx-auto my-4 col-lg-7 col-md-10 col-sm-10 " id="content">
     {error && <Message variant="danger">{error}</Message>}
-              {loading && <Loading />}
-              {message && <Message variant="danger">{message}</Message>}
+     {loading && <Loading />}
+       {Loading}
         <form onSubmit={addSondage} className="form-control my-4" id="survey" autoComplete="off">
             <h2 className="mt-0 mb-4 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
                 Créez Un Sondage

@@ -1,0 +1,44 @@
+.sidebar ul li :hover{
+    /* background-color: #009788; */
+    border-radius: 5px;
+    color: #fff;
+}
+
+/* .active {
+    background-color: #009788;
+    border-radius: 5px;
+    color: #fff;
+} */
+
+.sidebar ul li a{
+    /* color: #4A5460; */
+}
+
+.side{
+    background-color: #FF9700;
+    background-color: #EDF2F9;
+}
+
+.container-2{
+    
+    color: black;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25);
+}
+
+.header-dash{
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25);
+}
+
+.card{
+    box-shadow: 0 5px 10px rgba(0,0,0,0.25);
+    text-align: center;
+    left: 20px;
+}
+
+.charts {
+    font-family: sans-serif;
+    text-align: center;
+    margin-top: 3rem !important;
+  margin-bottom: 3rem !important;
+  width: 100%;
+  }

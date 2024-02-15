@@ -4,7 +4,7 @@ import { NavLink, useNavigate} from 'react-router-dom';
  import Message from './Message';
  import { register } from '../redux/actions/userAction';
  import { useSelector , useDispatch } from 'react-redux';
-import './register.css'
+// import './register.css'
 
  function Register() {
 	const [name, setName] = useState("");
@@ -33,12 +33,12 @@ import './register.css'
   return (
     <div className="body">
     <h2>Page de Connexion</h2>
-<div class="container" id="container">
+<div class="container-log" id="container">
 	<div class="form-container sign-in-container">
 	{error && <Message variant="danger">{error}</Message>}
            {loading && <Loading />}
            {message && <Message variant="danger">{message}</Message>}
-            <form onSubmit={handleRegister}>
+            <form onSubmit={handleRegister} className='form'>
 			<h1>Register</h1>
 			<div class="social-container">
 				<a href="/" class="social"><i class="fab fa-facebook-f"></i></a>
