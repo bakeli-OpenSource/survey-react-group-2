@@ -38,14 +38,14 @@ import { NavLink, useNavigate} from 'react-router-dom';
 	{error && <Message variant="danger">{error}</Message>}
            {loading && <Loading />}
            {message && <Message variant="danger">{message}</Message>}
-            <form onSubmit={handleRegister} className='form'>
-			<h1>Register</h1>
+            <form onSubmit={handleRegister}>
+			<h1 className="text-danger mt-3">Register</h1>
 			<div class="social-container">
 				<a href="/" class="social"><i class="fab fa-facebook-f"></i></a>
 				<a href="/" class="social"><i class="fab fa-google-plus-g"></i></a>
 				<a href="/" class="social"><i class="fab fa-linkedin-in"></i></a>
-			</div>
-			<span>or use your account</span>
+			</div> 
+			 <span>or use your account</span>
 			<input type="text" value={name}
               onChange={(e) => setName(e.target.value)} 
                placeholder="name" />
@@ -60,10 +60,10 @@ import { NavLink, useNavigate} from 'react-router-dom';
               onChange={(e) => setConfirmPassword(e.target.value)}
               placeholder="********"
              />
-			<br/>
-			<button type='submit'>Register</button>
-			<p>Vous avez déjà un compte ?</p>
-			<NavLink to="/login">Login</NavLink>	
+			<button type='submit'className="btn btn-danger">Register</button> <br />
+			<span>Vous avez déjà un compte ?  <NavLink to="/login" className="fw-bold">Connectez-vous! </NavLink> </span>
+			
+				
 		</form>
 		
             
@@ -76,7 +76,7 @@ import { NavLink, useNavigate} from 'react-router-dom';
 				<button class="ghost" id="signIn">Sign In</button>
 			</div>
 			<div class="overlay-panel overlay-right">
-				<h1>Hello, Friend!</h1>
+				<h1>BIENVENUE</h1>
 				<p>Entrez vos données personnelles et commencez votre sondage avec nous</p>
 				<button class="ghost" id="signUp">Sign Up</button>
 			</div>

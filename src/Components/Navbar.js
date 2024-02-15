@@ -25,7 +25,7 @@ function Navbar() {
   return (
     <>
   <nav className="navbar">
-      <div className="brand-title">RXDFORM</div>
+      <div className="brand-title fw-bold">RXDFORM</div>
       <a href="/" className="toggle-button" onClick={handleToggleClick}>
         <span className="bar"></span>
         <span className="bar"></span>
@@ -34,7 +34,7 @@ function Navbar() {
       <div className={`navbar-links ${isNavbarActive ? 'active' : ''}`}>
         <ul>
           {/* <li><NavLink to="/register">SignIn</NavLink></li> */}
-          <li><NavLink to="/sondage">Sondage</NavLink></li>
+          <li className="fw-bold"><NavLink to="/sondage">Sondage</NavLink></li>
           
           <div className='logbnt'>
         {userInfo && userInfo  ?(
@@ -47,7 +47,8 @@ function Navbar() {
         </NavDropdown.Item>
       </NavDropdown></li>
         ):(
-           <li><NavLink to="/register">S'inscrire</NavLink></li>                    
+          
+           <li className="fw-bold"><NavLink to="/register">S'inscrire</NavLink></li>                    
 )}
 </div>
         </ul>

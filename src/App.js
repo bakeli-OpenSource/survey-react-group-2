@@ -28,7 +28,7 @@ function App() {
         <Route path='/' element={<Home/>} />
         <Route path='/dashboard' element={<Dashboard/>} />
       </Routes>
-      <Footer/>  
+      {/* <Footer/>   */}
       </>
 </BrowserRouter>
   

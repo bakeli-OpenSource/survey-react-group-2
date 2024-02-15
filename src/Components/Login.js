@@ -26,14 +26,6 @@ import './register.css';
    
    
 
-    // try {
-    //   await axios.post('http://localhost:8000/api/users/login',{email,password})
-    //   setEmail("");
-    //   setPassword("")
-    //   navigate("/")
-    // } catch (e) {
-    //   console.log(e);
-    // }
   }
   return (
     <>
@@ -44,14 +36,14 @@ import './register.css';
   {error && <Message variant="danger">{error}</Message>}
      {loading && <Loading />}
        {Loading}
-    <form onSubmit={handleLogin} className='form'>
-			<h1>Login</h1>
-			<div class="social-container">
+    <form onSubmit={handleLogin}>
+			<h1 className="text-danger mt-3">Login</h1>
+			 <div class="social-container">
 				<a href="/" class="social"><i class="fab fa-facebook-f"></i></a>
 				<a href="/" class="social"><i class="fab fa-google-plus-g"></i></a>
 				<a href="/" class="social"><i class="fab fa-linkedin-in"></i></a>
 			</div>
-			<span>or use your account</span>
+			<span>or use your account</span> 
 			<input type="email" value={email}
               onChange={(e) => setEmail(e.target.value)} 
                placeholder="Email"/> 
@@ -59,9 +51,9 @@ import './register.css';
               onChange={(e) => setPassword(e.target.value)}
               placeholder="********" />
 			<br/>
-			<button type='submit'>Login</button>
+			<button type='submit'className="btn btn-danger ">Login</button>
 			<p>Vous n'avez pas de compte ? ?</p>
-			<NavLink to="/register">register</NavLink>	
+			<NavLink to="/register" className="btn btn-danger ">register</NavLink>	
 		</form>
 		
             
@@ -71,12 +63,12 @@ import './register.css';
 			<div class="overlay-panel overlay-left">
 				<h1>Welcome Back!</h1>
 				<p>To keep connected with us please login with your personal info</p>
-				<button class="ghost" id="signIn">Sign In</button>
+				<button class="ghost" id="signIn" className="btn btn-danger">Sign In</button>
 			</div>
 			<div class="overlay-panel overlay-right">
-				<h1>Hello, Friend!</h1>
-				<p>Entrez vos données personnelles et commencez votre sondage avec nous</p>
-				<button class="ghost" id="signUp">Sign Up</button>
+				<h1>Bienvenue</h1>
+				<p> veillez vous connecter pour commencer le Sondage</p>
+				{/* <button class="ghost" id="signUp"className="btn btn-danger ">Sign Up</button> */}
 			</div>
 		</div>
 	</div>
